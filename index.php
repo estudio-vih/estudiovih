@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregables del Proyecto: Estrategia de Capacitación VIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --google-blue: #1A73E8;
+            --google-blue-hover: #1760c6;
+            --google-red: #DB4437;
+            --google-green: #0F9D58;
+            --google-yellow: #F4B400;
+            --text-color-primary: #202124;
+            --text-color-secondary: #5f6368;
+            --background-light: #f8f9fa;
+            --card-background: #ffffff;
+            --border-color: #dadce0;
+            --shadow-subtle: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color-secondary);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: var(--background-light);
+        }
+
+        header {
+            background-color: var(--card-background);
+            color: var(--text-color-primary);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px var(--shadow-subtle);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--google-blue); /* Google blue for main title */
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-color-secondary);
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .deliverable-section {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--shadow-subtle);
+            padding: 25px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .deliverable-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px var(--shadow-hover);
+        }
+
+        .deliverable-section h2 {
+            color: var(--text-color-primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .deliverable-subsection {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid var(--google-blue); /* Accent color for subsections */
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .deliverable-subsection h3 {
+            color: var(--text-color-primary);
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            line-height: 1.3;
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-item a {
+            color: var(--text-color-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            flex-grow: 1; /* Allow link to take available space */
+            min-width: 0; /* Allow content to shrink */
+        }
+
+        .file-item a:hover {
+            color: var(--google-blue);
+        }
+
+        .file-item .file-icon {
+            margin-right: 12px;
+            font-size: 1.2em;
+            color: var(--google-blue); /* Default icon color */
+            width: 24px; /* Fixed width for consistent alignment */
+            text-align: center;
+        }
+
+        .file-item .file-name {
+            font-weight: 400;
+            white-space: nowrap; /* Prevent wrapping of file name */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add ellipsis for long names */
+            flex-grow: 1; /* Allow name to take available space */
+        }
+
+        .file-item .file-meta {
+            font-size: 0.8rem;
+            color: var(--text-color-secondary);
+            margin-left: 15px;
+            white-space: nowrap;
+            flex-shrink: 0; /* Prevent meta from shrinking */
+        }
+
+        .file-item .file-type {
+            font-weight: 300;
+            margin-left: 5px;
+            color: #777;
+        }
+
+        /* Specific icon colors based on file type */
+        .file-item .file-icon.doc { color: var(--google-blue); }
+        .file-item .file-icon.pdf { color: var(--google-red); }
+        .file-item .file-icon.xls { color: var(--google-green); }
+
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 30px;
+            font-size: 0.85rem;
+            box-shadow: 0 -2px 4px var(--shadow-subtle);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .deliverable-section {
+                padding: 20px;
+            }
+
+            .deliverable-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .deliverable-subsection {
+                padding-left: 10px;
+            }
+
+            .deliverable-subsection h3 {
+                font-size: 1.2rem;
+            }
+
+            .file-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 0;
+            }
+
+            .file-item a {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .file-item .file-name {
+                white-space: normal; /* Allow wrapping of file name on small screens */
+                text-overflow: clip; /* Remove ellipsis if wrapping */
+            }
+
+            .file-item .file-icon {
+                margin-top: 2px;
+            }
+
+            .file-item .file-meta {
+                margin-left: 36px; /* Align meta info with text */
+                text-align: left;
+                width: calc(100% - 36px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            .deliverable-section h2 {
+                font-size: 1.4rem;
+            }
+            .deliverable-subsection h3 {
+                font-size: 1.05rem;
+            }
+            .file-item .file-name {
+                font-size: 0.9rem;
+            }
+            .file-item .file-meta {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Entregables del Proyecto</h1>
+        <p>ESTUDIO ESPECIALIZADO PARA LA CREACIÓN DE UNA ESTRATEGIA DE CAPACITACIÓN CENTRADA EN LA ELIMINACIÓN DEL ESTIGMA Y LA DISCRIMINACIÓN VINCULADA AL VIH COMO BARRERAS PARA EL ACCESO A LOS SERVICIOS DE SALUD.</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="deliverable-section">
+                <h2>Entregables para revisión 2023</h2>
+
+                <div class="deliverable-subsection">
+                    <h3>1er entregable</h3>
+                    <ul class="file-list">
+                        <li class="file-item">
+                            <a href="1_Entregables_para revision_2023/1er_entregable/1er_entregable_HRAEPY-CENSIDA.docx" target="_blank">
+                                <i class="far fa-file-word file-icon doc"></i>
+                                <span class="file-name">1er entregable HRAEPY-CENSIDA</span>
+                            </a>
+                            <span class="file-meta">31/10/2023 09:39 a. m. <span class="file-type">.docx</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-subsection">
+                    <h3>2do entregable</h3>
+                    <ul class="file-list">
+                        <li class="file-item">
+                            <a href="1_Entregables_para revision_2023/2do_entregable/2do_entregable_HRAEPY-CENSIDA.docx" target="_blank">
+                                <i class="far fa-file-word file-icon doc"></i>
+                                <span class="file-name">2do entregable HRAEPY-CENSIDA</span>
+                            </a>
+                            <span class="file-meta">15/11/2023 12:46 p. m. <span class="file-type">.docx</span></span>
+                        </li>
+                        <li class="file-item">
+                            <a href="1_Entregables_para revision_2023/2do_entregable/Anexo_2_Base_de_datos_analisis_bibliometrico.xlsx" target="_blank">
+                                <i class="far fa-file-excel file-icon xls"></i>
+                                <span class="file-name">Anexo 2 Base de datos análisis bibliométrico</span>
+                            </a>
+                            <span class="file-meta">15/11/2023 01:38 p. m. <span class="file-type">.xlsx</span></span>
+                        </li>
+                        <li class="file-item">
+                            <a href="1_Entregables_para revision_2023/2do_entregable/Anexo_3_Base_de_datos_de_datos_comunitarios.xlsx" target="_blank">
+                                <i class="far fa-file-excel file-icon xls"></i>
+                                <span class="file-name">Anexo 3 Base de datos de datos comunitarios</span>
+                            </a>
+                            <span class="file-meta">15/11/2023 02:43 p. m. <span class="file-type">.xlsx</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-subsection">
+                    <h3>3er entregable</h3>
+                    <ul class="file-list">
+                        <li class="file-item">
+                            <a href="1_Entregables_para revision_2023/3er_entregable/3er_entregable_HRAEPY-CENSIDA.docx" target="_blank">
+                                <i class="far fa-file-word file-icon doc"></i>
+                                <span class="file-name">3er entregable HRAEPY-CENSIDA</span>
+                            </a>
+                            <span class="file-meta">30/11/2023 02:43 p. m. <span class="file-type">.docx</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-subsection">
+                    <h3>4to entregable</h3>
+                    <ul class="file-list">
+                        <li class="file-item">
+                            <a href="1_Entregables_para revision_2023/4to_entregable/4to_entregable_HRAEPY-CENSIDA 2.docx" target="_blank">
+                                <i class="far fa-file-word file-icon doc"></i>
+                                <span class="file-name">4to entregable HRAEPY-CENSIDA 2</span>
+                            </a>
+                            <span class="file-meta">30/11/2023 03:52 p. m. <span class="file-type">.docx</span></span>
+                        </li>
+                        <li class="file-item">
+                            <a href="1_Entregables_para revision_2023/4to_entregable/Anexo_4_Curso.docx" target="_blank">
+                                <i class="far fa-file-word file-icon doc"></i>
+                                <span class="file-name">Anexo 4 Curso</span>
+                            </a>
+                            <span class="file-meta">30/11/2023 04:55 p. m. <span class="file-type">.docx</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="deliverable-section">
+                <h2>Documentos finales aceptados y aprobados para firma y entrega</h2>
+
+                <div class="deliverable-subsection">
+                    <h3>1er entregable</h3>
+                    <ul class="file-list">
+                        <li class="file-item">
+                            <a href="2_Entregables_para_firma_2023/1er_entregable/1er_entregable_HRAEPY-CENSIDA.pdf" target="_blank">
+                                <i class="far fa-file-pdf file-icon pdf"></i>
+                                <span class="file-name">1er entregable HRAEPY-CENSIDA</span>
+                            </a>
+                            <span class="file-meta">30/11/2023 10:05 a. m. <span class="file-type">.pdf</span></span>
+                        </li>
+                        <li class="file-item">
+                            <a href="2_Entregables_para_firma_2023/1er_entregable/ANEXO_1.pdf" target="_blank">
+                                <i class="far fa-file-pdf file-icon pdf"></i>
+                                <span class="file-name">ANEXO 1</span>
+                            </a>
+                            <span class="file-meta">30/11/2023 10:08 a. m. <span class="file-type">.pdf</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-subsection">
+                    <h3>2do entregable</h3>
+                    <ul class="file-list">
+                        <li class="file-item">
+                            <a href="2_Entregables_para_firma_2023/2do_entregable/2do_entregable_HRAEPY-CENSIDA.pdf" target="_blank">
+                                <i class="far fa-file-pdf file-icon pdf"></i>
+                                <span class="file-name">2do entregable HRAEPY-CENSIDA</span>
+                            </a>
+                            <span class="file-meta">30/11/2023 10:06 a. m. <span class="file-type">.pdf</span></span>
+                        </li>
+                        <li class="file-item">
+                            <a href="2_Entregables_para_firma_2023/2do_entregable/ANEXO-2_Base_de_datos.pdf" target="_blank">
+                                <i class="far fa-file-pdf file-icon pdf"></i>
+                                <span class="file-name">ANEXO-2 Base de datos</span>
+                            </a>
+                            <span class="file-meta">30/11/2023 10:12 a. m. <span class="file-type">.pdf</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-subsection">
+                    <h3>3er entregable</h3>
+                    <ul class="file-list">
+                        <li class="file-item">
+                            <a href="2_Entregables_para_firma_2023/3er_entregable/3er_entregable_HRAEPY-CENSIDA.pdf" target="_blank">
+                                <i class="far fa-file-pdf file-icon pdf"></i>
+                                <span class="file-name">3er entregable HRAEPY-CENSIDA</span>
+                            </a>
+                            <span class="file-meta">04/12/2023 02:58 p. m. <span class="file-type">.pdf</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-subsection">
+                    <h3>4to entregable</h3>
+                    <ul class="file-list">
+                        <li class="file-item">
+                            <a href="2_Entregables_para_firma_2023/4to_entregable/4to_entregable_HRAEPY-CENSIDA.pdf" target="_blank">
+                                <i class="far fa-file-pdf file-icon pdf"></i>
+                                <span class="file-name">4to entregable HRAEPY-CENSIDA</span>
+                            </a>
+                            <span class="file-meta">04/12/2023 07:58 a. m. <span class="file-type">.pdf</span></span>
+                        </li>
+                        <li class="file-item">
+                            <a href="2_Entregables_para_firma_2023/4to_entregable/Anexo_4_Curso_y_presentaciones.pdf" target="_blank">
+                                <i class="far fa-file-pdf file-icon pdf"></i>
+                                <span class="file-name">Anexo 4 Curso y presentaciones</span>
+                            </a>
+                            <span class="file-meta">04/12/2023 08:38 a. m. <span class="file-type">.pdf</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Proyecto de Capacitación VIH. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
